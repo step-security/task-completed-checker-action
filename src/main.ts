@@ -30,7 +30,6 @@ async function validateSubscription(): Promise<void> {
 
   const serverUrl = process.env.GITHUB_SERVER_URL || 'https://github.com'
   const body: Record<string, string> = {action: action || ''}
-  // eslint-disable-next-line @typescript-eslint/camelcase
   if (serverUrl !== 'https://github.com') body.ghes_server = serverUrl
   try {
     await axios.post(
@@ -65,11 +64,9 @@ async function run(): Promise<void> {
       core.info('no task list and skip the process.')
       await githubApi.rest.checks.create({
         name: appName,
-        // eslint-disable-next-line @typescript-eslint/camelcase
         head_sha: github.context.payload.pull_request?.head.sha,
         status: 'completed',
         conclusion: 'success',
-        // eslint-disable-next-line @typescript-eslint/camelcase
         completed_at: new Date().toISOString(),
         output: {
           title: appName,
@@ -96,11 +93,9 @@ async function run(): Promise<void> {
 
     await githubApi.rest.checks.create({
       name: appName,
-      // eslint-disable-next-line @typescript-eslint/camelcase
       head_sha: github.context.payload.pull_request?.head.sha,
       status: 'completed',
       conclusion: isTaskCompleted ? 'success' : 'failure',
-      // eslint-disable-next-line @typescript-eslint/camelcase
       completed_at: new Date().toISOString(),
       output: {
         title: appName,
