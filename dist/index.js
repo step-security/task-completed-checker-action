@@ -169,7 +169,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.removeIgnoreTaskLitsText = removeIgnoreTaskLitsText;
 exports.createTaskListText = createTaskListText;
 function removeIgnoreTaskLitsText(text) {
-    return text.replace(/<!-- ignore-task-list-start -->[\s| ]*(- \[[x| ]\] .+[\s| ]*)+<!-- ignore-task-list-end -->/g, '');
+    return text.replace(/<!-- ignore-task-list-start -->[\s\S]*?<!-- ignore-task-list-end -->/g, '');
 }
 function createTaskListText(body) {
     const completedTasks = body.match(/(- \[[x]\].+)/g);
