@@ -16,7 +16,7 @@ jobs:
   task-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: step-security/task-completed-checker-action@v1
+      - uses: step-security/task-completed-checker-action@v0
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
 ```
